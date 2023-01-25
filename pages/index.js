@@ -5,7 +5,7 @@ import {client} from '../lib/client';
 const index = ({booksData}) => {
   return (
     <div>
-      <HeroBanner data={booksData[0]} />
+      
       
       <div className='products-heading'>
         <h2>Beset</h2>
