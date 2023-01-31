@@ -4,7 +4,7 @@ import { AiOutlineMinus , AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react
 import { Books } from '../../components'
 import { useStateContext } from '../../context/StateContext'
 const BooksDetails = ({book,books}) => {
-    const {image, name, details,price} = book
+    const {image, name, details,price,categoria,slug} = book
     const [index, setIndex] = useState(0);
 
     const { decQty, incQty, qty, onAdd } = useStateContext();
@@ -12,19 +12,14 @@ const BooksDetails = ({book,books}) => {
     
     <div>
         <div className="product-detail-container">
-            <div>
+            <div className="detail_own">
                 <div className="image-container">
-                    <img src={urlFor(image && image[index])} alt="" width={450} height={450} srcset="" />
+                    <img src={urlFor(image && image[index])} alt="" width={400} height={550} srcset="" />
 
-                </div>
-                {/*
-                <div className="small-images-container">
-                    {image?.map((item,i) => (
-                        <img src={urlFor(item)} className={i===index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)} />
-                    ))}
-                </div>*/}
+                </div>            
                 <div className="product-detail-desc">
                     <h1>{name}</h1>
+                    <h5>{slug.current}</h5>
                     <div className="reviews">
                         <div>
                             <AiFillStar/>
@@ -37,8 +32,10 @@ const BooksDetails = ({book,books}) => {
                             (20)
                         </p>
                     </div>
-                    <h4>Details:</h4>
-                    <p>{details}</p>
+                    <h4>Categorias:</h4>
+                    { categoria.map((x) => (
+                        <p>{x}</p>
+                    ))}
                     <p className='price'>${price}</p>
                     <div className="quantity">
                         <h3>Quantity:</h3>
